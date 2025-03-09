@@ -1,5 +1,6 @@
 <?php
 require "db.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -66,6 +67,7 @@ require "db.php";
     <div>
         <?php require "show.php"; ?>
     </div>
+
 </body>
 
 </html>

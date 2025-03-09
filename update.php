@@ -8,6 +8,7 @@ $status = $_POST["status"] ?? "";
 $moving = $bu;
 $update = [];
 $errors_moving = [];
+
 if (isset($_POST['update'])) {
     if (1 <= (strlen($title))) {
         if (strlen($title) <= 3) {
@@ -40,7 +41,7 @@ if (isset($_POST['update'])) {
             next($moving);
             $s = $conn->query("UPDATE datatable SET $key = '$cook' WHERE id =$id");
             $all = $s->fetchAll(PDO::FETCH_ASSOC);
-            $bu=$moving;
+            $bu = $moving;
         }
     }
     // header("Location: /index.php");

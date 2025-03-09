@@ -1,7 +1,6 @@
 <?php
 //нажатие на поиск
 if (($_GET["search"]) ??  '') {
-
     $search = ($_GET["search"]);
     if (is_numeric($search)) {
         $sql = "SELECT * FROM datatable WHERE id = $search";
@@ -21,15 +20,20 @@ if (($_GET["search"]) ??  '') {
         require "created_at.php";
     }
 
-
     foreach ($all as $k => $array) {
+        echo "<div class ='item-search'>";
         foreach ($array as $a => $string) {
             echo '<p>' . $string . '</p>';
         }
-        $id = $array['id'];
+        $id = htmlspecialchars($array['id']);
         echo '<form method="Get">
         <input type="hidden" name="id" value="' . $id . '">
         <input type="submit" name="update" value="Обновить">
         </form>';
+        echo '<form action="?id=' . $id . '" method="POST">
+            <input type="hidden" name="DELETE" value="' . $id . '">
+            <input type="submit" value="Удалить">
+            </form>';
+        echo "</div>";
     }
 }

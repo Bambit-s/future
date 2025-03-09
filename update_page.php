@@ -1,7 +1,10 @@
 <?php
 $errors = [];
-if (isset($_GET["update"]) && !empty($_GET["id"])) {
-    $sub_id = $_GET["id"];
+if (isset($_GET["PUT"])) {
+    $input = $_SERVER['REQUEST_URI'];
+    $id = preg_replace("/[^,.0-9]/", '', $input);
+    
+    $sub_id = $id;
     $resul = $conn->prepare("SELECT * FROM datatable WHERE id = ?");
     $resul->execute([$sub_id]);
     $bu = $resul->fetch(PDO::FETCH_ASSOC);
